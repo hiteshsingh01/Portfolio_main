@@ -15,8 +15,8 @@ import { skillsData, projectsData, experienceData, educationData, certifications
 
 function App() {
   const name = "Hitesh";
-  const email = "jar77bhati@gmail.com";
-  const phone = "+91-7976571390";
+  const email = "hiteshsingh2k4@gmail.com";
+  const phone = "7976926703";
   const location = "Jaipur, India";
 
   const scrollToSection = (sectionId) => {

@@ -1,12 +1,21 @@
-
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
+import gsap from 'gsap';
 
 export const Projects = ({ projects }) => {
   const { toast } = useToast();
+  const cardRefs = useRef([]);
+
+  // GSAP hover handlers
+  const handleHover = (el) => {
+    gsap.to(el, { scale: 1.04, boxShadow: '0 8px 32px rgba(102,126,234,0.15)', duration: 0.3, ease: 'power2.out' });
+  };
+  const handleHoverOut = (el) => {
+    gsap.to(el, { scale: 1, boxShadow: '0 1px 4px rgba(0,0,0,0.04)', duration: 0.3, ease: 'power2.in' });
+  };
 
   const handleNotImplemented = () => {
     toast({
@@ -36,11 +45,14 @@ export const Projects = ({ projects }) => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
+              ref={el => (cardRefs.current[index] = el)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="project-card bg-white rounded-lg overflow-hidden"
+              className="project-card bg-white rounded-lg overflow-hidden cursor-pointer"
+              onMouseEnter={e => handleHover(e.currentTarget)}
+              onMouseLeave={e => handleHoverOut(e.currentTarget)}
             >
               <img
                 src={project.image}
@@ -63,32 +75,57 @@ export const Projects = ({ projects }) => {
                 </div>
 
                 <div className="flex gap-3 mt-auto">
-                  {project.hasCode && (
-                    <Button
-                      onClick={handleNotImplemented}
-                      variant="outline"
-                      size="sm"
+                  {project.hasCode && project.codeLink && (
+                    <a
+                      href={project.codeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1"
                     >
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full"
+                      >
+                        <Github className="mr-2 h-4 w-4" />
+                        Code
+                      </Button>
+                    </a>
                   )}
-                  {project.hasLive && (
-                    <Button
-                      onClick={handleNotImplemented}
-                      variant="outline"
-                      size="sm"
+                  {project.hasLive && project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1"
                     >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live
-                    </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full"
+                      >
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Live
+                      </Button>
+                    </a>
                   )}
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* View All Projects Button */}
+        <div className="flex justify-center mt-12">
+          <a
+            href="#"
+            className="inline-flex items-center px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 focus:outline-none border-2 border-black dark:border-white bg-black text-white dark:bg-white dark:text-black hover:bg-white hover:text-black hover:dark:bg-black hover:dark:text-white group shadow-lg"
+            style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
+          >
+            <Github className="mr-3 h-6 w-6" />
+            View All Projects
+            <span className="ml-3 transition-transform group-hover:translate-x-1">→</span>
+          </a>
         </div>
       </div>
     </section>
