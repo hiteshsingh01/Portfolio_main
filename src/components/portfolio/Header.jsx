@@ -24,9 +24,9 @@ export const Header = ({ name, scrollToSection }) => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold text-gray-900"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-black text-white text-2xl font-bold shadow"
           >
-            {name.charAt(0)}.
+            {name.charAt(0)}
           </motion.div>
 
           <div className="hidden md:flex space-x-8">
@@ -39,14 +39,16 @@ export const Header = ({ name, scrollToSection }) => {
                 {item}
               </button>
             ))}
-            <Button
-              onClick={handleNotImplemented}
-              variant="outline"
-              size="sm"
-              className="border-gradient"
+            <a
+              href="/Hitesh.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Resume
-            </Button>
+              <Button variant="outline" size="sm" className="border-gradient">
+                Resume
+              </Button>
+            </a>
           </div>
 
           <div className="md:hidden">
@@ -79,14 +81,20 @@ export const Header = ({ name, scrollToSection }) => {
                 {item}
               </button>
             ))}
-            <Button
-              onClick={handleNotImplemented}
-              variant="outline"
-              size="sm"
-              className="w-full border-gradient"
+            <a
+              href="/Hitesh.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Resume
-            </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full border-gradient"
+              >
+                Resume
+              </Button>
+            </a>
           </div>
         </motion.div>
       )}

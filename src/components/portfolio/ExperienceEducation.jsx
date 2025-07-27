@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Building, GraduationCap, MapPin, Calendar, Award } from "lucide-react";
-import gsap from "gsap";
 
 export const ExperienceEducation = ({
   experience,
@@ -9,30 +8,6 @@ export const ExperienceEducation = ({
   certifications,
   achievements,
 }) => {
-  // Refs for all cards
-  const expCardRefs = useRef([]);
-  const eduCardRefs = useRef([]);
-  const certCardRef = useRef(null);
-  const achCardRef = useRef(null);
-
-  // GSAP hover handlers
-  const handleHover = (el) => {
-    gsap.to(el, {
-      scale: 1.04,
-      boxShadow: "0 8px 32px rgba(102,126,234,0.15)",
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-  const handleHoverOut = (el) => {
-    gsap.to(el, {
-      scale: 1,
-      boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
-      duration: 0.3,
-      ease: "power2.in",
-    });
-  };
-
   return (
     <section
       id="experience"
@@ -66,14 +41,11 @@ export const ExperienceEducation = ({
               {experience.map((exp, index) => (
                 <motion.div
                   key={index}
-                  ref={(el) => (expCardRefs.current[index] = el)}
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="relative pl-12 pb-8 cursor-pointer"
-                  onMouseEnter={(e) => handleHover(e.currentTarget)}
-                  onMouseLeave={(e) => handleHoverOut(e.currentTarget)}
+                  className="relative pl-12 pb-8"
                 >
                   <div className="absolute left-2 top-2 w-4 h-4 timeline-dot rounded-full"></div>
                   <div className="bg-white rounded-lg p-6 border border-gray-200">
@@ -118,14 +90,11 @@ export const ExperienceEducation = ({
             {education.map((edu, index) => (
               <motion.div
                 key={index}
-                ref={(el) => (eduCardRefs.current[index] = el)}
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-white rounded-lg p-6 border border-gray-200 mb-6 cursor-pointer"
-                onMouseEnter={(e) => handleHover(e.currentTarget)}
-                onMouseLeave={(e) => handleHoverOut(e.currentTarget)}
+                className="bg-white rounded-lg p-6 border border-gray-200 mb-6"
               >
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">
                   {edu.degree}
@@ -145,12 +114,7 @@ export const ExperienceEducation = ({
                 <p className="text-gray-600 text-sm">{edu.description}</p>
               </motion.div>
             ))}
-            <div
-              ref={certCardRef}
-              className="bg-white rounded-lg p-6 border border-gray-200 mb-6 cursor-pointer"
-              onMouseEnter={(e) => handleHover(e.currentTarget)}
-              onMouseLeave={(e) => handleHoverOut(e.currentTarget)}
-            >
+            <div className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">
                 Certifications
               </h4>
@@ -163,12 +127,7 @@ export const ExperienceEducation = ({
                 ))}
               </div>
             </div>
-            <div
-              ref={achCardRef}
-              className="bg-white rounded-lg p-6 border border-gray-200 cursor-pointer"
-              onMouseEnter={(e) => handleHover(e.currentTarget)}
-              onMouseLeave={(e) => handleHoverOut(e.currentTarget)}
-            >
+            <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">
                 Achievements
               </h4>

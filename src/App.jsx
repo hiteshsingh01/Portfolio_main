@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -15,8 +14,8 @@ import { skillsData, projectsData, experienceData, educationData, certifications
 
 function App() {
   const name = "Hitesh";
-  const email = "hiteshsingh2k4@gmail.com";
-  const phone = "7976926703";
+  const email = import.meta.env.VITE_EMAIL;
+  const phone = "+91-7976926703";
   const location = "Jaipur, India";
 
   const scrollToSection = (sectionId) => {

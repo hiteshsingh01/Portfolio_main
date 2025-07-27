@@ -41,7 +41,7 @@ export const Projects = ({ projects }) => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -50,7 +50,7 @@ export const Projects = ({ projects }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="project-card bg-white rounded-lg overflow-hidden cursor-pointer"
+              className="project-card bg-white rounded-lg overflow-hidden cursor-pointer flex flex-col h-full shadow-md hover:shadow-xl transition-shadow duration-300"
               onMouseEnter={e => handleHover(e.currentTarget)}
               onMouseLeave={e => handleHoverOut(e.currentTarget)}
             >
@@ -58,11 +58,11 @@ export const Projects = ({ projects }) => {
                 src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover"
+                loading="lazy"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{project.title}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
-                
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">{project.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm line-clamp-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
@@ -73,14 +73,13 @@ export const Projects = ({ projects }) => {
                     </span>
                   ))}
                 </div>
-
-                <div className="flex gap-3 mt-auto">
+                <div className="flex gap-3 mt-auto flex-col sm:flex-row">
                   {project.hasCode && project.codeLink && (
                     <a
                       href={project.codeLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1"
+                      className="flex-1 min-w-[120px]"
                     >
                       <Button
                         variant="outline"
@@ -97,7 +96,7 @@ export const Projects = ({ projects }) => {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1"
+                      className="flex-1 min-w-[120px]"
                     >
                       <Button
                         variant="outline"
@@ -119,12 +118,12 @@ export const Projects = ({ projects }) => {
         <div className="flex justify-center mt-12">
           <a
             href="#"
-            className="inline-flex items-center px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 focus:outline-none border-2 border-black dark:border-white bg-black text-white dark:bg-white dark:text-black hover:bg-white hover:text-black hover:dark:bg-black hover:dark:text-white group shadow-lg"
+            className="inline-flex flex-col sm:flex-row items-center px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 focus:outline-none border-2 border-black dark:border-white bg-black text-white dark:bg-white dark:text-black hover:bg-white hover:text-black hover:dark:bg-black hover:dark:text-white group shadow-lg"
             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
           >
-            <Github className="mr-3 h-6 w-6" />
+            <Github className="mr-0 sm:mr-3 h-6 w-6 mb-2 sm:mb-0" />
             View All Projects
-            <span className="ml-3 transition-transform group-hover:translate-x-1">→</span>
+            <span className="ml-0 sm:ml-3 transition-transform group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>

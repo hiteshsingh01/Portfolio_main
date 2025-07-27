@@ -1,4 +1,11 @@
 import React from 'react';
+import jenkinsImg from "../../public/jenkins.png";
+import faceImg from "../../public/face.png";
+import searchImg from "../../public/searchdone.png";
+import ec2Img from "../../public/ec2.png";
+import ecommerceImg from "../../public/ecommerce.jpg";
+import fileManagerImg from "../../public/filesystem.png";
+
 
 export const skillsData = {
     "DevOps & Cloud": [
@@ -49,9 +56,18 @@ export const socialLinks = {
 
 export const projectsData = [
   {
+    title: "SearchDone - Search Engine Website",
+    description: "A fully functional search engine website with modern interface and advanced search capabilities.",
+    image: searchImg,
+    tags: ["HTML", "CSS", "JavaScript", "React", "Responsive Design"],
+    hasCode: true,
+    hasLive: true,
+    liveLink: "https://searchdone.in/"
+  },
+  {
     title: "CI/CD Automation with Azure DevOps",
-    description: "Automated deployment to IIS servers with rollback capabilities, pipeline triggers, and environment stages.",
-    image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/5f1071a6f0853f3fbb253d537e7f8788.png",
+    description: "Automated CI/CD pipeline for Flask applications using Jenkins.",
+    image: jenkinsImg,
     tags: ["Azure DevOps", "IIS", "CI/CD", "PowerShell"],
     hasCode: true,
     hasLive: false,
@@ -59,55 +75,58 @@ export const projectsData = [
     liveLink: null
   },
   {
-    title: "IOT Accident Detection System",
-    description: "Built to detect real-time impact and trigger emergency alerts with GPS location tracking.",
-    image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/a39cdd6a258003277d3b60e5efadc7a4.png",
-    tags: ["IoT", "Python", "Machine Learning", "GPS"],
-    hasCode: true,
-    hasLive: false,
-    codeLink: "https://github.com/hiteshsingh01/iot-accident-detection",
-    liveLink: null
-  },
+  title: "Face Recognition Attendance System",
+  description: "Automated attendance system using real-time face recognition with OpenCV and Tkinter GUI.",
+  image: faceImg,
+  tags: ["Python", "OpenCV", ],
+  hasCode: true,
+  hasLive: false,
+  codeLink: "https://github.com/hiteshsingh01/AttendanceSystem",
+  liveLink: null
+},
+
   {
-    title: "E-Commerce Website Frontend",
-    description: "Responsive e-commerce interface built during internship with modern design patterns.",
-    image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/87336366df572bb13118a5a4f5e4a4f4.png",
-    tags: ["HTML", "CSS", "JavaScript", "Responsive"],
-    hasCode: true,
-    hasLive: true,
-    codeLink: "https://github.com/hiteshsingh01/ecommerce-frontend",
-    liveLink: "https://ecommerce-frontend-hitesh.netlify.app/"
-  },
+  title: "AWS EC2 Dashboard",
+  description: "A web-based dashboard to monitor and manage AWS EC2 instances using Boto3 and Streamlit.",
+  image: ec2Img, // replace with your image variable
+  tags: ["Python", "AWS", "Boto3", "Streamlit"],
+  hasCode: true,
+  hasLive: false,
+  codeLink: "https://github.com/hiteshsingh01/AWS_Dashboad",
+  liveLink: null
+},
+
   {
-    title: "Real Estate Management Dashboard",
-    description: "Salesforce Lightning dashboard for CRM workflows and property management.",
-    image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/cb8d7f5b83dbc8f3195f3a85300b8756.png",
-    tags: ["Salesforce", "Lightning", "CRM", "Apex"],
-    hasCode: false,
-    hasLive: false,
-    codeLink: null,
-    liveLink: null
-  },
-  {
-    title: "Student Grade Management System",
-    description: "Complete system for managing student records and grade calculations.",
-    image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/e9a17af42a28bb067b4b6218cc407bd0.png",
-    tags: ["Python", "Database", "GUI", "Management"],
-    hasCode: true,
-    hasLive: false,
-    codeLink: "https://github.com/hiteshsingh01/student-grade-management",
-    liveLink: null
-  },
-  {
-    title: "URL Shortener Service",
-    description: "Custom URL shortening service with analytics and tracking features.",
-    image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/22c34553bafe378a11431e98b6a94fcf.png",
-    tags: ["Python", "Web Service", "Analytics", "API"],
-    hasCode: true,
-    hasLive: true,
-    codeLink: "https://github.com/hiteshsingh01/url-shortener-service",
-    liveLink: "https://url-shortener-hitesh.netlify.app/"
-  }
+  title: "E-commerce Website",
+  description: "A basic e-commerce website built using HTML, CSS, and JavaScript with product listing, cart functionality, and responsive design.",
+  image: ecommerceImg, // replace with your image variable
+  tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+  hasCode: true,
+  hasLive: true,
+  codeLink: "https://github.com/hiteshsingh01/ecommerce-website",
+  liveLink: "https://hiteshsingh01.github.io/ecommerce-website/"
+},
+{
+  title: "File Manager App",
+  description: "A powerful file manager built with Streamlit and Python, offering folder browsing, file operations, and full access to the Windows filesystem.",
+  image: fileManagerImg, // replace with your image variable
+  tags: ["Python", "Streamlit", "File System", "GUI"],
+  hasCode: true,
+  hasLive: false,
+  codeLink: "https://github.com/hiteshsingh01/File_Manager_App",
+  liveLink: null
+},
+  // The following project is only for the All Projects section, not for Featured Projects:
+  // {
+  //   title: "URL Shortener Service",
+  //   description: "Custom URL shortening service with analytics and tracking features.",
+  //   image: "https://storage.googleapis.com/hostinger-horizons-assets-prod/f5bb479e-7c77-447a-b3b1-1b27c08c4307/22c34553bafe378a11431e98b6a94fcf.png",
+  //   tags: ["Python", "Web Service", "Analytics", "API"],
+  //   hasCode: true,
+  //   hasLive: true,
+  //   codeLink: "https://github.com/hiteshsingh01/url-shortener-service",
+  //   liveLink: "https://url-shortener-hitesh.netlify.app/"
+  // }
 ];
 
 export const experienceData = [
@@ -145,7 +164,7 @@ export const experienceData = [
 
 export const educationData = [
   {
-      degree: "B.E. Computer Science",
+      degree: "B.Tech Computer Science",
       institution: "Arya College of Engineering & IT",
       location: "Jaipur, India",
       period: "2021 - 2025",
@@ -165,14 +184,5 @@ export const achievementsData = [
       organization: "Arya College",
       description: "First place in college-wide LAN gaming competition demonstrating strategic thinking and teamwork"
     },
-    {
-      title: "CodeFest 2023 - 1st Runner Up",
-      organization: "TechnoJam",
-      description: "Secured 2nd position in inter-college coding competition, showcasing problem-solving and algorithmic skills."
-    },
-    {
-      title: "Best Intern Award",
-      organization: "InternPe",
-      description: "Recognized as the top intern for exceptional performance and contribution to web development projects."
-    }
+   
 ];

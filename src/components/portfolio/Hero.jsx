@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Download, Github, Mail } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -14,6 +14,20 @@ export const Hero = ({ name }) => {
     });
   };
 
+  // Typing animation for heading
+  const fullText = `Hi, I'm ${name}.`;
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayedText(fullText.slice(0, i + 1));
+      i++;
+      if (i === fullText.length) clearInterval(interval);
+    }, 120); // slow and smooth
+    return () => clearInterval(interval);
+  }, [fullText]);
+
   return (
     <section
       id="home"
@@ -26,7 +40,10 @@ export const Hero = ({ name }) => {
           transition={{ duration: 0.8 }}
           className="text-6xl md:text-8xl font-extrabold text-black mb-4"
         >
-          Hi, I'm {name}.
+          {displayedText}
+          <span className="animate-pulse">
+            {displayedText.length < fullText.length ? "|" : ""}
+          </span>
         </motion.h1>
 
         <motion.p
@@ -55,32 +72,48 @@ export const Hero = ({ name }) => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-3 justify-center"
         >
-          <Button
-            onClick={handleNotImplemented}
-            size="lg"
-            className="bg-black text-white border border-black hover:bg-gray-900"
+          <a
+            href="/Hitesh.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Download className="mr-2 h-4 w-4" />
-            View Resume
-          </Button>
-          <Button
-            onClick={handleNotImplemented}
-            variant="outline"
-            size="lg"
-            className="border-black text-black hover:bg-black hover:text-white"
+            <Button
+              size="lg"
+              className="bg-black text-white border border-black hover:bg-gray-900"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Resume
+            </Button>
+          </a>
+          <a
+            href="https://github.com/hiteshsingh01"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Github className="mr-2 h-4 w-4" />
-            GitHub
-          </Button>
-          <Button
-            onClick={handleNotImplemented}
-            variant="outline"
-            size="lg"
-            className="border-black text-black hover:bg-black hover:text-white"
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-black text-black hover:bg-black hover:text-white"
+            >
+              <Github className="mr-2 h-4 w-4" />
+              GitHub
+            </Button>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/hiteshsingh01/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Mail className="mr-2 h-4 w-4" />
-            Contact Me
-          </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-black text-black hover:bg-black hover:text-white"
+            >
+              <Linkedin className="mr-2 h-4 w-4" />
+              LinkedIn
+            </Button>
+          </a>
         </motion.div>
       </div>
       {/* Scroll Down Indicator at the very bottom */}
