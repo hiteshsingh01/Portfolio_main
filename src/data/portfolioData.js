@@ -65,13 +65,13 @@ export const projectsData = [
     liveLink: "https://searchdone.in/"
   },
   {
-    title: "CI/CD Automation with Azure DevOps",
+    title: "CI/CD Automation ",
     description: "Automated CI/CD pipeline for Flask applications using Jenkins.",
     image: jenkinsImg,
-    tags: ["Azure DevOps", "IIS", "CI/CD", "PowerShell"],
+    tags: ["CI/CD",],
     hasCode: true,
     hasLive: false,
-    codeLink: "https://github.com/hiteshsingh01/azure-devops-cicd",
+    codeLink: "https://github.com/hiteshsingh01/devops_project_01",
     liveLink: null
   },
   {
